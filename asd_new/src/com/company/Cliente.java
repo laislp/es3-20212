@@ -1,11 +1,13 @@
 package com.company;
 import java.time.*;
 import java.util.ArrayList;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class Cliente implements Comparable<Cliente> { // adidcionando comparable class
     private String Nome;
     private String Telefone;
-    private LocalDateTime DataNascimento;
+    private Date DataNascimento;
     private Character Genero;
     private ArrayList<Produto> produto;
 
@@ -30,12 +32,13 @@ public class Cliente implements Comparable<Cliente> { // adidcionando comparable
         Telefone = telefone;
     }
 
-    public LocalDateTime getDataNascimento() {
-        return DataNascimento;
+    public Date getDataNascimento() {
+        return this.DataNascimento;
     }
 
-    public void setDataNascimento(LocalDateTime dataNascimento) {
-        DataNascimento = dataNascimento;
+    public void setDataNascimento(String dataNascimento) {
+
+        this.DataNascimento = new SimpleDateFormat("dd/MM/yyyy").parse(dataNascimento);;
     }
 
     public Character getGenero() {
@@ -54,10 +57,10 @@ public class Cliente implements Comparable<Cliente> { // adidcionando comparable
         Nome = nome;
     }
 
-    public Cliente(String nome, String telefone, LocalDateTime dataNascimento, char genero) {
+    public Cliente(String nome, String telefone, String dataNascimento, char genero) {
         Nome = nome;
         Telefone = telefone;
-        DataNascimento = dataNascimento;
+        this.DataNascimento = new SimpleDateFormat("dd/MM/yyyy").parse(dataNascimento);
         Genero = genero;
     }
 

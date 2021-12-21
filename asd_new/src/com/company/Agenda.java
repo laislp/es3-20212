@@ -37,14 +37,16 @@ public class Agenda {
         clientes.clear();
     }
     public void ListarClientes() {
-        Collections.sort(this.clientes);// usando java8 para comparar as strings
+        clientes.sort((c1,c2) -> c1.getNome().compareTo(c2.getNome()));
         System.out.println(this.clientes);
     }
     public void ListarPorGenero(Character genero) {
+        ArrayList<Cliente> aux = new ArrayList<>();
         for (Cliente c: clientes) {
             if (c.getGenero().equals(genero)) {
-                System.out.println(c);
+                aux.add(c);
             }
         }
+        System.out.println(aux);
     }
 }
